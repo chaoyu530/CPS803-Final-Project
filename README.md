@@ -1,6 +1,5 @@
 # CPS803-Final-Project
-
-# Chaoyu Wang 500815335 
+Chaoyu Wang 500815335 
 
 
 # There have our 10000 aniaml image dataset
