@@ -15,8 +15,8 @@ random.seed(10)
 
 # ----------------------------------------------------------------------------------------------------
 os.chdir((os.path.split(os.path.realpath(__file__))[0] + "/").replace("\\\\", "/").replace("\\", "/"))
-dataset=Path('../cps803/data/total')
-iter = 500
+dataset=Path('../data/large')
+iter = 1000
 img_target = 64
 # ----------------------------------------------------------------------------------------------------
 
@@ -142,7 +142,7 @@ class NeuralNetwork:
         self.activation_outputs = (a1,a2,a3,y_)
         return y_
         
-    def backward(self,x,y,learning_rate=0.001):
+    def backward(self,x,y,learning_rate=0.005):
         W1,W2,W3,W4 = self.model['W1'],self.model['W2'],self.model['W3'],self.model['W4']
         b1, b2, b3,b4 = self.model['b1'],self.model['b2'],self.model['b3'],self.model['b4']
         m = x.shape[0]
@@ -200,8 +200,6 @@ def softmax(a):
     ans = e_pa/np.sum(e_pa,axis=1,keepdims=True)
     return ans        
 
-
-# In[12]:
 
 
 def loss(y_oht,dataset):
@@ -269,14 +267,14 @@ print("Test Accuracy: %.4f :("%getAccuracy(XTest,YTest,model))
 
 
 # ### Plot confusion matrix
+label = ["butterfly","cat","chicken","cow","dog","elephant","horse","sheep","spider","squirrel"]
+
 from sklearn.metrics import confusion_matrix
-from visualize import plot_confusion_matrix
 from sklearn.metrics import classification_report
 output=model.predict(XTest)
-conf_mat=confusion_matrix(output,YTest)
-print(conf_mat)
+from sklearn.metrics import ConfusionMatrixDisplay
+import matplotlib.pyplot as plt
+ConfusionMatrixDisplay.from_predictions(YTest, output, display_labels=label)
+plt.show()
 
-plot_confusion_matrix(conf_mat,classes=["butterfly","cat","chicken","cow","dog","elephant","horse","sheep","spider","squittel"],title="Confusion Matrix Test")
-
-output=model.predict(XTest)
-print(classification_report(output,YTest))
+print(classification_report(YTest, output))
