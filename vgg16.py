@@ -10,12 +10,20 @@ import seaborn as sns
 from sklearn.metrics import classification_report
 import numpy as np
 import matplotlib.pyplot as plt
+from pathlib import Path
+
+# ----------------------------------------------------------------------------------------------------
+import os
+os.chdir((os.path.split(os.path.realpath(__file__))[0] + "/").replace("\\\\", "/").replace("\\", "/"))
+dataset = Path('../data/large')
+# ----------------------------------------------------------------------------------------------------
+
 
 training_generator = ImageDataGenerator(rescale=1./255,
                                         rotation_range=7,
                                         horizontal_flip=True,
                                         zoom_range=0.2)
-training_dataset = training_generator.flow_from_directory('E:/desktop/cps803/data/train',
+training_dataset = training_generator.flow_from_directory(dataset,
                                                         target_size = (224, 224),
                                                         batch_size = 32,
                                                         class_mode = 'categorical',
@@ -25,7 +33,7 @@ training_dataset.classes
 training_dataset.class_indices
 
 test_generator = ImageDataGenerator(rescale=1./255)
-test_dataset = test_generator.flow_from_directory('E:/desktop/cps803/data/test',
+test_dataset = test_generator.flow_from_directory(dataset,
                                                      target_size = (224, 224),
                                                      batch_size = 32,
                                                      class_mode = 'categorical',

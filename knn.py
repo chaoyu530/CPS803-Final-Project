@@ -3,6 +3,8 @@ import cv2
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, classification_report
+from pathlib import Path
+
 
 # The first step is to split the training set and test set
 

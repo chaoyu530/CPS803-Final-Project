@@ -9,8 +9,11 @@ from skimage.io import imread
 from skimage.transform import resize
 from sklearn.preprocessing import MinMaxScaler
 
+# ----------------------------------------------------------------------------------------------------
 import os
 os.chdir((os.path.split(os.path.realpath(__file__))[0] + "/").replace("\\\\", "/").replace("\\", "/"))
+dataset = Path('../data/large')
+# ----------------------------------------------------------------------------------------------------
 
 def load_image_files(container_path, dimension=(64, 64)):
     """
@@ -54,7 +57,7 @@ def load_image_files(container_path, dimension=(64, 64)):
                  images=images,
                  DESCR=descr)
 
-image_dataset = load_image_files("../data/medium/")
+image_dataset = load_image_files(dataset)
 print("Finish loading")
 print("Start split")
 X_train, X_test, y_train, y_test = train_test_split(image_dataset.data, image_dataset.target, test_size=0.3,random_state=109)
