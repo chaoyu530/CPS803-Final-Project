@@ -3,7 +3,6 @@
 # - In this project we are going to classify Pokemon.
 # - Here we will use Neural Network for image classification
 
-import os
 from pathlib import Path
 from tensorflow.keras.preprocessing import image
 import matplotlib.pyplot as plt
@@ -14,6 +13,7 @@ from sklearn.metrics import classification_report
 random.seed(10)
 
 # ----------------------------------------------------------------------------------------------------
+import os
 os.chdir((os.path.split(os.path.realpath(__file__))[0] + "/").replace("\\\\", "/").replace("\\", "/"))
 dataset=Path('../data/large')
 iter = 1000

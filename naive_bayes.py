@@ -7,6 +7,15 @@ from sklearn.metrics import confusion_matrix, classification_report
 import os
 import cv2
 
+# ----------------------------------------------------------------------------------------------------
+import os
+os.chdir((os.path.split(os.path.realpath(__file__))[0] + "/").replace("\\\\", "/").replace("\\", "/"))
+dataset=Path('../data/large')
+iter = 1000
+img_target = 64
+# ----------------------------------------------------------------------------------------------------
+
+
 X = []
 Y = []
 
