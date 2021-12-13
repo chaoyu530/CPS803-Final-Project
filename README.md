@@ -14,7 +14,7 @@
 - For the selection of the dataset, through the project [“Animal-10” powered by Kaggle](https://www.kaggle.com/alessiocorrado99/animals10), a total of 10 different animal datasets was selected
 - Dataset was divided into two subsets with different numbers of images:    
     - subsets of size 500 and 1000 respectively for each animal category 
-    - ratio of training data to validation data is 7:3
+    - ratio of training data to validation data is 8:2
 
 ## Methodology
 + K-nearest neighbours Algorithm
